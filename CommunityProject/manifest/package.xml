@@ -36,11 +36,6 @@
         <members>*</members>
         <name>CustomObject</name>
     </types>
-
-    <types>
-        <members>Accounts/Test_Folder/Test_Report_be3</members>
-        <name>Report</name>
-    </types>
     <types>
         <members>*</members>
         <name>Flow</name>

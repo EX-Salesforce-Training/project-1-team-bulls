@@ -1,0 +1,18 @@
+<apex:page standardController="Account" recordSetVar="Accounts">
+    <apex:pageBlock title="Account Information">
+        <apex:pageBlockTable value="{!Accounts}" var="acc">
+            <apex:column headerValue="Name">
+                <apex:outputField value="{!acc.name}"/>
+            </apex:column>
+            <apex:column headerValue="Billing Address">
+                <apex:outputText label="Billing Address" value="{!acc.billingStreet} {!acc.BillingCity}, {!acc.BillingState} {!acc.BillingPostalCode}"/>
+            </apex:column>
+            <apex:column headerValue="Shipping Address">
+                <apex:outputText label="Shipping Address" value="{!acc.ShippingStreet} {!acc.ShippingCity}, {!acc.ShippingState} {!acc.ShippingPostalCode}"/>
+            </apex:column>
+            <apex:column headerValue="Phone Number">
+                <apex:outputText label="Phone Number" value="{!acc.Phone}"/>
+            </apex:column>
+        </apex:pageBlockTable>
+    </apex:pageBlock>
+</apex:page>
