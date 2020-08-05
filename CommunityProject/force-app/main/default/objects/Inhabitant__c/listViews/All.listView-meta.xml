@@ -3,12 +3,7 @@
     <fullName>All</fullName>
     <columns>NAME</columns>
     <columns>Address__c</columns>
-    <columns>Delivery_Status__c</columns>
-    <columns>Delivery_Time__c</columns>
-    <columns>Fragile__c</columns>
-    <columns>Insured__c</columns>
-    <columns>Price__c</columns>
-    <columns>Tracking_ID__c</columns>
+    <columns>Contact__c</columns>
     <filterScope>Everything</filterScope>
     <label>All</label>
 </ListView>
