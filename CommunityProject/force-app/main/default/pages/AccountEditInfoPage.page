@@ -1,16 +1,21 @@
 <apex:page controller="AccountInformationController">
     <apex:form >
     	<apex:pageBlock title="Edit Account Information">
+            <apex:pageBlockSection columns="2">
+                <apex:outputText value="Find my Account: "/>
+                <apex:inputText value="{!name}" styleClass="inputFields"/> <br/>
+            </apex:pageBlockSection>
+            
             
             <apex:pageBlockSection columns="2">
                 <apex:outputText value="Phone Number: "/>
-                <apex:inputText value="{!phone}" styleClass="phone"/> <br/>
+                <apex:inputText value="{!phone}" styleClass="inputFields"/>
             </apex:pageBlockSection>
             
-            <apex:pageBlockSection columns="2">
+            <apex:pageBlockSection columns="2" >
                 <apex:outputText value="Shipping Street:"/>
                 <apex:pageBlockSectionItem >
-                	<apex:inputText value="{!ShippingStreet}" styleClass="shippingAddress"/>
+                	<apex:inputText value="{!ShippingStreet}" styleClass="inputFields"/>
                 </apex:pageBlockSectionItem>
                 <apex:outputText value="Shipping City:"/>
                 <apex:inputText value="{!ShippingCity}"/> 
@@ -25,7 +30,7 @@
                 <apex:outputText value="Billing Street: "/>
                 
                 <apex:pageBlockSectionItem >
-                    <apex:inputText value="{!BillingStreet}" styleClass="billingAddress"/>
+                    <apex:inputText value="{!BillingStreet}" styleClass="inputFields"/>
                 </apex:pageBlockSectionItem>
                 
                 <apex:outputText value="Billing City: "/>
@@ -37,13 +42,16 @@
             </apex:pageBlockSection>
             
             <apex:pageBlockButtons >
-                <apex:commandButton value="Save" action="{!save}" id="saveButton" />
-                <apex:commandButton value="Cancel" action="{!cancel}" id="cancelButton" />
+                <apex:commandButton value="Search" action="{!searchAccount}" id="searchAccount"/>
+                <apex:commandButton value="Update" action="{!save}" id="saveButton" />
             </apex:pageBlockButtons>
+            
+            <apex:outputText value="{!userError}" styleClass="errorMessage"/>
+            <apex:outputText value="{!userSuccess}" styleClass="successMessage"/>
         </apex:pageBlock>
     </apex:form>
     
-    <style>
+    <style>        
         .bPageBlock .pbBody .dataCol {
         	border:0px;
         }
@@ -51,17 +59,22 @@
         .bPageBlock .pbBody .labelCol {
             border:0px;
         }
-        
-        .shippingAddress {
-        	margin-right: 635px;
+
+        .inputFields {
+        	margin-right: 1600px;
         }
         
-    	.billingAddress {
-            margin-right: 635px;
+        .errorMessage {
+        	color: red;
+        	font-size: large;
+        	margin-left: 28%;
         }
         
-        .phone {
-        	margin-right: 635px;
+        .successMessage {
+        	color: green;
+        	font-size: large;
+        	margin-left: 28%;
         }
+
     </style>
 </apex:page>

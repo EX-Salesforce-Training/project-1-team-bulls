@@ -1,6 +1,6 @@
 public class AccountInformationController {
 
-    public List<Wrapper> accountList {get;set;}
+    public Account account {get;set;}
     public String phone {get;set;}
     public String BillingStreet {get;set;}
     public String BillingCity {get;set;}
@@ -11,53 +11,68 @@ public class AccountInformationController {
     public String ShippingZip {get;set;}
     public String ShippingStreet {get;set;}
     public String name {get;set;}
-    
-    public AccountInformationController() {
-        accountList = new List<Wrapper>();
-        
-        for (Account acc: [SELECT Id, Name, BillingStreet, BillingCity, BillingState, BillingPostalCode, ShippingStreet, ShippingState, ShippingCity, ShippingPostalCode, Phone FROM Account]) {
-            Wrapper newWrapper = new Wrapper();
-            newWrapper.accounts = acc;
-            newWrapper.selected = false;
-            accountList.add(newWrapper);
-        }
-    }
-    
-    public pageReference edit() {
-        
-        for (Wrapper r: accountList) {
-            if (r.selected == true) {
-                phone = r.accounts.phone;
-                BillingStreet = r.accounts.BillingStreet;
-                BillingCity = r.accounts.BillingCity;
-                BillingState = r.accounts.BillingState;
-                BillingZip = r.accounts.BillingPostalCode;
-                ShippingCity = r.accounts.ShippingCity;
-                ShippingState = r.accounts.ShippingState;
-                ShippingStreet = r.accounts.ShippingStreet;
-                ShippingZip = r.accounts.ShippingPostalCode;
-                name = r.accounts.name;
-            }
-        }
-        
-        return page.AccountEditInfoPage;
-    }
+    public String userError {get;set;}
+    public String userSuccess {get;set;}
     
     public void save() {
-        List<Account> updatedAccount = new List<Account>();
-        for (Wrapper wr: accountList) {
-            updatedAccount.add(wr.accounts);
-        }
+        Account acc = account;
+
+        try {
+            acc.Phone = phone;
+            acc.BillingStreet = BillingStreet;
+            acc.BillingCity = BillingCity;
+            acc.BillingState = BillingState;
+            acc.BillingPostalCode = BillingZip;
+            acc.ShippingCity = ShippingCity;
+            acc.ShippingState = ShippingState;
+            acc.ShippingPostalCode = ShippingZip;
+            acc.ShippingStreet = ShippingStreet;
             
-        update updatedAccount;
+            update acc;
+            
+            userSuccess = 'Successfully Updates Account Information';
+        } catch (DMLException dmlError) {
+            userError = 'Account was not able to be updated';
+        } catch (NullPointerException nullPointer) {
+            // Do nothing if the user attempts to update without 
+            // having searched for an account.
+        }
     }
     
     public pageReference cancel() {
         return page.AccountInformationPage;
     }
     
-    public class Wrapper {
-        public Account accounts {get;set;}
-        public boolean selected {get;set;}
+    public void searchAccount() {
+        try {
+            Account acc = ([SELECT Id, Name, BillingStreet, BillingCity, 
+                               BillingState, BillingPostalCode, ShippingStreet, 
+                               ShippingState, ShippingCity, ShippingPostalCode, Phone 
+                               FROM Account WHERE name = :name LIMIT 1]);
+    
+            account = acc;
+            
+            phone = acc.Phone;
+            BillingStreet = acc.BillingStreet;
+            BillingCity = acc.BillingCity;
+            BillingState = acc.BillingState;
+            BillingZip = acc.BillingPostalCode;
+            ShippingCity = acc.ShippingCity;
+            ShippingState = acc.ShippingState;
+            ShippingZip = acc.ShippingPostalCode;
+            userError = null;
+        } catch (QueryException error) {
+            userError = 'No Account was found.';
+            
+            account = null;
+            phone = null;
+            BillingStreet = null;
+            BillingCity = null;
+            BillingState = null;
+            BillingZip = null;
+            ShippingCity = null;
+            ShippingState = null;
+            ShippingZip = null;
+        }
     }
 }

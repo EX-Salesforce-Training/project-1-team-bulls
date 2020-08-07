@@ -19,8 +19,8 @@
                 </apex:column>
             </apex:pageBlockTable>
             <apex:pageBlockButtons >
-                    <apex:commandButton value="Edit" action="{!edit}" id="editButton"/>
-                </apex:pageBlockButtons>
+                <apex:commandButton value="Edit" action="{!edit}" id="editButton"/>
+            </apex:pageBlockButtons>
         </apex:pageBlock>
 	</apex:form>
 </apex:page>
