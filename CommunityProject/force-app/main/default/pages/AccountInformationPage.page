@@ -1,18 +1,26 @@
-<apex:page standardController="Account" recordSetVar="Accounts">
-    <apex:pageBlock title="Account Information">
-        <apex:pageBlockTable value="{!Accounts}" var="acc">
-            <apex:column headerValue="Name">
-                <apex:outputField value="{!acc.name}"/>
-            </apex:column>
-            <apex:column headerValue="Billing Address">
-                <apex:outputText label="Billing Address" value="{!acc.billingStreet} {!acc.BillingCity}, {!acc.BillingState} {!acc.BillingPostalCode}"/>
-            </apex:column>
-            <apex:column headerValue="Shipping Address">
-                <apex:outputText label="Shipping Address" value="{!acc.ShippingStreet} {!acc.ShippingCity}, {!acc.ShippingState} {!acc.ShippingPostalCode}"/>
-            </apex:column>
-            <apex:column headerValue="Phone Number">
-                <apex:outputText label="Phone Number" value="{!acc.Phone}"/>
-            </apex:column>
-        </apex:pageBlockTable>
-    </apex:pageBlock>
+<apex:page controller="AccountInformationController">
+    <apex:form >
+        <apex:pageBlock title="Account Information">
+            <apex:pageBlockTable value="{!accountList}" var="acc">
+                <apex:column headerValue="Selected">
+                    <apex:inputCheckbox value="{!acc.selected}"/>
+                </apex:column>
+                <apex:column headerValue="Name">
+                    <apex:outputField value="{!acc.accounts.name}"/>
+                </apex:column>
+                <apex:column headerValue="Billing Address">
+                    <apex:outputText label="Billing Address" value="{!acc.accounts.billingStreet} {!acc.accounts.BillingCity}, {!acc.accounts.BillingState} {!acc.accounts.BillingPostalCode}"/>
+                </apex:column>
+                <apex:column headerValue="Shipping Address">
+                    <apex:outputText label="Shipping Address" value="{!acc.accounts.ShippingStreet} {!acc.accounts.ShippingCity}, {!acc.accounts.ShippingState} {!acc.accounts.ShippingPostalCode}"/>
+                </apex:column>
+                <apex:column headerValue="Phone Number">
+                    <apex:outputText label="Phone Number" value="{!acc.accounts.Phone}"/>
+                </apex:column>
+            </apex:pageBlockTable>
+            <apex:pageBlockButtons >
+                    <apex:commandButton value="Edit" action="{!edit}" id="editButton"/>
+                </apex:pageBlockButtons>
+        </apex:pageBlock>
+	</apex:form>
 </apex:page>

@@ -1,11 +1,67 @@
-<apex:page standardController="Account">
+<apex:page controller="AccountInformationController">
     <apex:form >
     	<apex:pageBlock title="Edit Account Information">
-            <apex:outputText value="{!Account.phone}"/>
-            <apex:inputText value="{!Account.phone}"/> <br />
-            <!--<apex:pageBlockButtons >
-                <apex:commandButton value="Save Contact" action="{!save}"/>
-            </apex:pageBlockButtons>-->
+            
+            <apex:pageBlockSection columns="2">
+                <apex:outputText value="Phone Number: "/>
+                <apex:inputText value="{!phone}" styleClass="phone"/> <br/>
+            </apex:pageBlockSection>
+            
+            <apex:pageBlockSection columns="2">
+                <apex:outputText value="Shipping Street:"/>
+                <apex:pageBlockSectionItem >
+                	<apex:inputText value="{!ShippingStreet}" styleClass="shippingAddress"/>
+                </apex:pageBlockSectionItem>
+                <apex:outputText value="Shipping City:"/>
+                <apex:inputText value="{!ShippingCity}"/> 
+                <apex:outputText value="Shipping State:"/>
+                <apex:inputText value="{!ShippingState}"/>
+                <apex:outputText value="Shipping Postal Code:"/>
+                <apex:inputText value="{!ShippingZip}"/>
+            </apex:pageBlockSection>
+            
+            <br/><br/>
+            <apex:pageBlockSection columns="2">
+                <apex:outputText value="Billing Street: "/>
+                
+                <apex:pageBlockSectionItem >
+                    <apex:inputText value="{!BillingStreet}" styleClass="billingAddress"/>
+                </apex:pageBlockSectionItem>
+                
+                <apex:outputText value="Billing City: "/>
+                <apex:inputText value="{!BillingCity}"/>
+                <apex:outputText value="Billing State: "/>
+                <apex:inputText value="{!BillingState}"/>
+                <apex:outputText value="Billing Postal Code: "/>
+                <apex:inputText value="{!BillingZip}"/>
+            </apex:pageBlockSection>
+            
+            <apex:pageBlockButtons >
+                <apex:commandButton value="Save" action="{!save}" id="saveButton" />
+                <apex:commandButton value="Cancel" action="{!cancel}" id="cancelButton" />
+            </apex:pageBlockButtons>
         </apex:pageBlock>
     </apex:form>
+    
+    <style>
+        .bPageBlock .pbBody .dataCol {
+        	border:0px;
+        }
+        
+        .bPageBlock .pbBody .labelCol {
+            border:0px;
+        }
+        
+        .shippingAddress {
+        	margin-right: 635px;
+        }
+        
+    	.billingAddress {
+            margin-right: 635px;
+        }
+        
+        .phone {
+        	margin-right: 635px;
+        }
+    </style>
 </apex:page>
