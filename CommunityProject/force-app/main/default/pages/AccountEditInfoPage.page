@@ -1,0 +1,80 @@
+<apex:page controller="AccountInformationController">
+    <apex:form >
+    	<apex:pageBlock title="Edit Account Information">
+            <apex:pageBlockSection columns="2">
+                <apex:outputText value="Find my Account: "/>
+                <apex:inputText value="{!name}" styleClass="inputFields"/> <br/>
+            </apex:pageBlockSection>
+            
+            
+            <apex:pageBlockSection columns="2">
+                <apex:outputText value="Phone Number: "/>
+                <apex:inputText value="{!phone}" styleClass="inputFields"/>
+            </apex:pageBlockSection>
+            
+            <apex:pageBlockSection columns="2" >
+                <apex:outputText value="Shipping Street:"/>
+                <apex:pageBlockSectionItem >
+                	<apex:inputText value="{!ShippingStreet}" styleClass="inputFields"/>
+                </apex:pageBlockSectionItem>
+                <apex:outputText value="Shipping City:"/>
+                <apex:inputText value="{!ShippingCity}"/> 
+                <apex:outputText value="Shipping State:"/>
+                <apex:inputText value="{!ShippingState}"/>
+                <apex:outputText value="Shipping Postal Code:"/>
+                <apex:inputText value="{!ShippingZip}"/>
+            </apex:pageBlockSection>
+            
+            <br/><br/>
+            <apex:pageBlockSection columns="2">
+                <apex:outputText value="Billing Street: "/>
+                
+                <apex:pageBlockSectionItem >
+                    <apex:inputText value="{!BillingStreet}" styleClass="inputFields"/>
+                </apex:pageBlockSectionItem>
+                
+                <apex:outputText value="Billing City: "/>
+                <apex:inputText value="{!BillingCity}"/>
+                <apex:outputText value="Billing State: "/>
+                <apex:inputText value="{!BillingState}"/>
+                <apex:outputText value="Billing Postal Code: "/>
+                <apex:inputText value="{!BillingZip}"/>
+            </apex:pageBlockSection>
+            
+            <apex:pageBlockButtons >
+                <apex:commandButton value="Search" action="{!searchAccount}" id="searchAccount"/>
+                <apex:commandButton value="Update" action="{!save}" id="saveButton" />
+            </apex:pageBlockButtons>
+            
+            <apex:outputText value="{!userError}" styleClass="errorMessage"/>
+            <apex:outputText value="{!userSuccess}" styleClass="successMessage"/>
+        </apex:pageBlock>
+    </apex:form>
+    
+    <style>        
+        .bPageBlock .pbBody .dataCol {
+        	border:0px;
+        }
+        
+        .bPageBlock .pbBody .labelCol {
+            border:0px;
+        }
+
+        .inputFields {
+        	margin-right: 1600px;
+        }
+        
+        .errorMessage {
+        	color: red;
+        	font-size: large;
+        	margin-left: 28%;
+        }
+        
+        .successMessage {
+        	color: green;
+        	font-size: large;
+        	margin-left: 28%;
+        }
+
+    </style>
+</apex:page>
