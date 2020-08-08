@@ -1,0 +1,112 @@
+<apex:page standardStylesheets="false">
+    
+    
+<!--  ----------------------------------------------------------------------  -->
+<!--  NOTE: Please add the following <META> element to your page <HEAD>.      -->
+<!--  If necessary, please modify the charset parameter to specify the        -->
+<!--  character set of your HTML page.                                        -->
+<!--  ----------------------------------------------------------------------  -->
+<head>
+    <META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=UTF-8"/>
+    <title>This is Case Submission Page</title>
+</head>
+    
+
+<!--  ----------------------------------------------------------------------  -->
+<!--  NOTE: Please add the following <FORM> element to your page.             -->
+<!--  ----------------------------------------------------------------------  -->
+<body style="background-color:#fff">
+
+
+
+<form action="https://webto.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8" method="POST">
+
+    <input type="hidden" name="orgid" value="00D3t000002o9qr"/>
+    <input type="hidden" name="retURL" value="https://as-08-03-20-developer-edition.na123.force.com"/>
+
+<!--  ----------------------------------------------------------------------  -->
+<!--  NOTE: These fields are optional debugging elements. Please uncomment    -->
+<!--  these lines if you wish to test in debug mode.                          -->
+<!--  <input type="hidden" name="debug" value=1>                              -->
+<!--  <input type="hidden" name="debugEmail"                                  -->
+<!--  value="amarjeetsingh_20@yahoo.com">                                     -->
+<!--  ----------------------------------------------------------------------  -->
+    <h1>
+    Submit New Ticket
+    </h1>
+    <style type="text/css">
+        
+    h1 { 
+    text-align: center; 
+    padding: 1cm;
+    margin: 1cm;
+    border:1cm;
+    }
+         
+    </style>
+<table>
+ 
+<tr>
+    <td><label for="email"><font size="+3">Email:-</font></label></td>
+    <td><input  id="email" maxlength="80" name="email" size="20" type="text" style="font-size:18px"/></td></tr>
+
+<tr>
+    <td><label for="phone"><font size="+3">Phone:-</font></label></td>
+<td><input  id="phone" maxlength="40" name="phone" size="20" type="text" style="font-size:18px"/></td></tr>
+
+<tr>
+<td>
+    <label for="subject"><font size="+3">Subject:-</font></label></td>
+<td><input  id="subject" maxlength="80" name="subject" size="20" type="text" style="font-size:18px"/></td></tr>
+
+<tr>
+    <td><label for="description"><font size="+3">Description:-</font></label></td>
+<td><textarea name="description" style="font-size:18px"></textarea></td></tr>
+
+<tr>
+    <td><label for="priority"><font size="+3">Priority:-</font></label></td>
+<td><select  id="priority" name="priority" style="font-size:18px"><option value="" style="font-size:18px">--None--</option><option value="High" style="font-size:18px">High</option>
+<option value="Medium" style="font-size:18px">Medium</option>
+<option value="Low" style="font-size:18px">Low</option>
+</select></td></tr>
+
+<tr>
+    <td><label for="type"><font size="+3">Type:-</font></label></td>
+<td><select  id="type" name="type" style="font-size:18px"><option value="" style="font-size:18px">--None--</option><option value="Mechanical" style="font-size:18px">Mechanical</option>
+<option value="Electrical" style="font-size:18px">Electrical</option>
+<option value="Electronic" style="font-size:18px">Electronic</option>
+<option value="Structural" style="font-size:18px">Structural</option>
+<option value="Other" style="font-size:18px">Other</option>
+</select></td></tr>
+
+<tr>
+    <td><label for="reason"><font size="+3">Case Reason:-</font></label></td>
+<td><select  id="reason" name="reason" style="font-size:18px"><option value="" style="font-size:18px">--None--</option><option value="Installation" style="font-size:18px">Installation</option>
+<option value="Equipment Complexity" style="font-size:18px">Equipment Complexity</option>
+<option value="Performance" style="font-size:18px">Performance</option>
+<option value="Breakdown" style="font-size:18px">Breakdown</option>
+<option value="Equipment Design" style="font-size:18px">Equipment Design</option>
+<option value="Feedback" style="font-size:18px">Feedback</option>
+<option value="Other" style="font-size:18px">Other</option>
+</select></td></tr>
+
+<tr>
+    <td><label for="status"><font size="+3">Status:-</font></label></td>
+<td><select  id="status" name="status" style="font-size:18px"><option value="" style="font-size:18px">--None--</option><option value="New" style="font-size:18px">New</option>
+<option value="Working" style="font-size:18px">Working</option>
+<option value="Escalated" style="font-size:18px">Escalated</option>
+<option value="Closed" style="font-size:18px">Closed</option>
+</select></td></tr>
+
+<input type="hidden"  id="external" name="external" value="1" />
+
+    <tr><td> </td><td> </td></tr>
+    <tr><td> </td><td> </td></tr>
+    <tr><td> </td>
+    <td><input type="submit" name="submit" style="font-size:20px"/></td></tr>
+</table>
+    
+    </form>
+</body>
+
+</apex:page>
